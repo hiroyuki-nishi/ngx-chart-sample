@@ -10,7 +10,7 @@ import { Chart } from 'chart.js';
 
 export class ChartComponent implements OnInit {
   context: CanvasRenderingContext2D;
-  @ViewChild('mycanvas01', {static: true}) mycanvas01: ElementRef;
+  @ViewChild('mycanvas', {static: true}) mycanvas01: ElementRef;
   @Input() data;
   @Input() options;
 

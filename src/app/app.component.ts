@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -9,68 +8,31 @@ import { Chart } from 'chart.js';
 })
 export class AppComponent implements OnInit {
   data = {
-    datasets: [{
-      label: 'Data01',
-      backgroundColor: 'rgba(255, 255, 153, 0.5)',
-      borderColor: 'rgba(255, 99, 132, 0)',
-      pointRadius: 0,
-      fill: true,
-      data: [
-        {x: 0, y: 2},
-        {x: 1, y: 1},
-        {x: 2, y: 2.5},
-        {x: 3, y: 5},
-        {x: 4, y: 3},
-        {x: 5, y: 4},
-        {x: 6, y: 9},
-        {x: 7, y: 7},
-        {x: 8, y: 12},
-      ],
-    }, {
-      label: 'Data02',
-      backgroundColor: 'rgba(153, 255, 255, 0.5)',
-      borderColor: 'rgba(255, 99, 132, 0)',
-      pointRadius: 0,
-      fill: true,
-      data: [
-        {x: 0, y: 1},
-        {x: 1, y: 4},
-        {x: 2, y: 8},
-        {x: 3, y: 12},
-        {x: 4, y: 1},
-        {x: 5, y: 5},
-        {x: 6, y: 2},
-        {x: 7, y: 3},
-        {x: 8, y: 1},
-      ],
-    }]
+    labels: ['2020/02/10', '2020/02/11', '2020/02/12', '2020/02/13'],
+    datasets: [
+      {
+        label: '生産時間',
+        data: [280, 340, 130, 300, 0],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)'
+      },
+      {
+        label: '非生産時間',
+        data: [80, 95, 32, 40],
+        backgroundColor: 'rgba(255, 159, 64, 0.2)'
+      }
+    ]
   };
 
   options = {
-    responsive: true,
-    tooltips: {
-      mode: 'index',
-      intersect: false,
-    },
-    title: {
-      display: true,
-      text: 'Angular & Chart.js'
-    },
     scales: {
       xAxes: [{
-        type: 'linear',
-        position: 'bottom',
-        scaleLabel: {
-          labelString: 'X',
-          display: true,
-        }
+        gridLines: {
+          offsetGridLines: true
+        },
+        stacked: true,
       }],
       yAxes: [{
-        type: 'linear',
-        scaleLabel: {
-          labelString: 'Y',
-          display: true
-        }
+        stacked: true,
       }]
     }
   };

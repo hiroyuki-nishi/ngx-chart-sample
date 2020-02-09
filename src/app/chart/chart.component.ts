@@ -9,15 +9,19 @@ import { Chart } from 'chart.js';
 })
 
 export class ChartComponent implements OnInit {
-  context01: CanvasRenderingContext2D;
+  context: CanvasRenderingContext2D;
   @ViewChild('mycanvas01', {static: true}) mycanvas01: ElementRef;
   @Input() data;
   @Input() options;
 
   ngOnInit() {
-    this.context01 = this.mycanvas01.nativeElement.getContext('2d');
-    const mycanvas01 = new Chart(this.context01, {
-      type: 'line',
+    this.context = this.mycanvas01.nativeElement.getContext('2d');
+    const mycanvas = this.createBarChart(this.context);
+  }
+
+  private createBarChart(context: CanvasRenderingContext2D): Chart {
+    return new Chart(context, {
+      type: 'horizontalBar',
       data: this.data,
       options: this.options
     });
